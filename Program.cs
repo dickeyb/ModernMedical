@@ -11,6 +11,10 @@ namespace ModernMedical
     /// c. If the number is divisible by 5 only, output Medical
     ///d. If the number is divisible by both 3 and 5, output ModernMedical
     ///e. If the number is not divisible by either 3 or 5, only output the number itself.
+    /// 
+    ///  Change: 10-19-11 Bruce Dickey. 
+    ///  Updated code so that output only one value even if numbers like 15 can be divided by
+    ///  3 and 5.  Change order of checks to make output match to sample output provided.
     /// </summary>
     class Program
     {
@@ -19,33 +23,28 @@ namespace ModernMedical
             float a, b;
             for (int i = 1; i < 101; i++)
             {
-                a = 0;
-                b = 0;
-
                 //Console.WriteLine("i={0}", i);
-
                 a = i % 3;
+                b = i % 5;
                 //Console.WriteLine("a={0}", a);
 
-                if (a == 0)
+                if (a == 0 && b == 0)
                 {
-                    Console.WriteLine("Modern", i);
+                    Console.WriteLine("ModernMedical");
                 }
-                b = i % 5;
-
-                if (b == 0)
-                {
-                    Console.WriteLine("Medical", i);
-                }
-
-                if (a == 00 && b == 0)
-                {
-                    Console.WriteLine("ModernMedical",i);
-                }
-                else if (a != 00 && b != 0)
+                else if (a != 0 && b != 0)
                 {
                     Console.WriteLine("{0}", i);
                 }
+                else if (a == 0)
+                {
+                    Console.WriteLine("Modern");
+                }
+                else if (b == 0)
+                {
+                    Console.WriteLine("Medical");
+                }
+               
             }
             Console.WriteLine("");
             Console.WriteLine("Press the enter key to exit the console session");
